@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import CreateInvitation from './components/CreateInvitation';
-import Invitation from './components/Invitation';
+import Admin from './components/Admin';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <CreateInvitation />
-        <Invitation />
-      </div>
+      <Admin />
     );
   }
 }

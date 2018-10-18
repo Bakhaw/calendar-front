@@ -16,34 +16,33 @@ class CreateInvitation extends Component {
     })
   }
 
-  handleSubmit(event) {
-    console.log('submit !', this.state.inputValue)
+  handleSubmit = async (event) => {
     event.preventDefault();
+    const params = new URLSearchParams();
+    params.append('dates', this.state.inputValue);
 
-    const bodyFormData = new FormData();
+    try {
+      await axios({
+        method: 'post',
+        url: 'http://localhost:8090/invitations/add',
+        data: params,
+      });
+    } catch (err) {
+      console.log(err)
+    }
 
-    bodyFormData.set('name', 'TestZer')
-    bodyFormData.set('dates', [this.state.inputValue]);
-
-    axios({
-      method: 'post',
-      url: 'http://localhost:8090/invitations/add',
-      data: bodyFormData,
-      config: { headers: {'Content-Type': 'multipart/form-data' }}
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    this.props.getInvitations();
   }
 
   render() {
     return (
-      <div>
-        <h1>Créer une invitation</h1>
+      <div className='create-invitation'>
+        <h1>Créer des invitations</h1>
 
-        <form action='http://localhost:8090/invitations/add' method='post'>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <TextField
             id='outlined-name'
-            label='Dates'
+            label='Ajouter des dates'
             name='dates'
             value={this.state.inputValue}
             onChange={this.handleChange}
