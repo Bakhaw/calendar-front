@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import key from '../../key';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -11,9 +11,9 @@ class Admin extends Component {
 
   state = {
     invitations: [],
-    key: 'PoubHattMaeFai',
+    key: key,
     inputValue: '',
-    showAdminInterface: true,
+    showAdminInterface: false,
     errorPass: false
   }
 
