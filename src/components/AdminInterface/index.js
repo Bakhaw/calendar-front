@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import CreateInvitation from '../CreateInvitation';
 import Invitations from '../Invitations';
 
-class Admin extends Component {
+class AdminInterface extends Component {
 
   state = {
     invitations: [],
@@ -81,4 +81,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default AdminInterface;

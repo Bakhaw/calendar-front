@@ -1,12 +1,6 @@
-import React, { Component } from 'react';
-import Admin from './components/Admin';
+import React from 'react';
+import Router from './Router';
 
-class App extends Component {
-  render() {
-    return (
-      <Admin />
-    );
-  }
-}
+const App = () => <Router />
 
 export default App;
