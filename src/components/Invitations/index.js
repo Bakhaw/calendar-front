@@ -16,7 +16,7 @@ class Invitation extends Component {
 
   render() {
     return (
-      <div style={{ width: 400, margin: 'auto' }}>
+      <div>
         <List component='nav'>
           {this.props.invitations.map((d, i) => {
             return (

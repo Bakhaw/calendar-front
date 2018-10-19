@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import './components/Admin/styles';
 @import './components/CreateInvitation/styles';
 
 body {
   font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
 }

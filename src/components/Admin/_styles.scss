@@ -1,0 +1,26 @@
+.admin-container {
+  text-align: center;
+}
+
+.login {
+  width: 20vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .login-input {
+    height: 100%;
+    width: 100%;
+  }
+  button {
+    width: 100%;
+  }
+}
+
+.admin-create-invitations {
+  width: 70vw;
+  min-height: 100vh;
+  margin: auto;
+  border: 2px solid red;
+}

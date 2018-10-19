@@ -47,6 +47,8 @@ class Modal extends Component {
         <Dialog
           open={this.state.showDialog}
           onClose={this.closeDialog}
+          maxWidth='md'
+          fullWidth
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">Modifier les dates</DialogTitle>
@@ -55,6 +57,7 @@ class Modal extends Component {
               autoFocus
               defaultValue={this.props.item.dates}
               onChange={(e) => this.handleInputChange(e)}
+              multiline
               margin="dense"
               id="dates"
               label="Dates"

@@ -50,7 +50,7 @@ class CreateInvitation extends Component {
             variant='outlined'
           />
 
-          <Button type='submit' variant='outlined' color='primary'>
+          <Button type='submit' variant='contained' color='primary'>
             Valider
           </Button>
         </form>

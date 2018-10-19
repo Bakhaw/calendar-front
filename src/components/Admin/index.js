@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 import CreateInvitation from '../CreateInvitation';
 import Invitations from '../Invitations';
 
 class Admin extends Component {
 
   state = {
-    invitations: []
+    invitations: [],
+    key: 'PoubHattMaeFai',
+    inputValue: '',
+    showAdminInterface: true,
+    errorPass: false
   }
 
   componentDidMount() {
     this.getInvitations();
+  }
+
+  handleInputChange = event => {
+    this.setState({ inputValue: event.target.value });
+  }
+
+  checkPass = () => {
+    if (this.state.inputValue === this.state.key) {
+      this.setState({ errorPass: false, showAdminInterface: true })
+    } else {
+      this.setState({ errorPass: true, showAdminInterface: false }, () => {
+        setTimeout(() => this.setState({ errorPass: false }), 2000);
+      });
+    }
   }
 
   getInvitations = async () => {
@@ -27,18 +48,37 @@ class Admin extends Component {
     this.getInvitations();
   }
 
-  render() { 
+  render() {
     return (
-      <div>
-        <h1>Bienvenue Mme. Poublan</h1>
+      <div className='admin-container'>
+        {!this.state.showAdminInterface &&
+          <div className='login'>
+            <h1>Bienvenue</h1>
+            <TextField className='login-input'
+              error={this.state.errorPass}
+              helperText={this.state.errorPass ? 'Mot de passe invalide' : ''}
+              variant='outlined'
+              margin='normal'
+              label='Mot de passe'
+              type='password'
+              onChange={this.handleInputChange} />
+            <Button variant='contained' color='primary' size='large' onClick={this.checkPass}>
+              Valider
+            </Button>
+          </div>
+        }
 
-        <CreateInvitation getInvitations={this.getInvitations}/>
-        <Invitations invitations={this.state.invitations}
-                    getInvitations={this.getInvitations}
-                    removeItem={this.removeItem} />
+        {this.state.showAdminInterface &&
+          <div className='admin-create-invitations'>
+            <CreateInvitation getInvitations={this.getInvitations} />
+            <Invitations invitations={this.state.invitations}
+              getInvitations={this.getInvitations}
+              removeItem={this.removeItem} />
+          </div>
+        }
       </div>
     );
   }
 }
- 
+
 export default Admin;
