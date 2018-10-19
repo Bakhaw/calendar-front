@@ -54,12 +54,10 @@ class CreateInvitation extends Component {
             variant='outlined'
           />
 
-          <Button type='submit' variant='contained' color='primary'>
+          <Button type='submit' size='large' variant='contained' color='primary'>
             Valider
           </Button>
         </form>
-
-        <p>{this.state.inputValue}</p>
       </div>
     );
   }

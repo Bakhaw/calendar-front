@@ -1,6 +1,39 @@
 .user-container {
-    text-align: center;
-    width: $invitationsInterfaceWidth;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    margin: auto;
+}
+
+.user-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: $invitationsInterfaceWidth;
+    min-height: 50vh;
+    .choose-date {
+        display: flex;
+        flex-direction: column;
+    }
+    .user-form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .user-input {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.calendar-container {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    min-height: 100vh;
 }
