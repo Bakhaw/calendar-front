@@ -31,6 +31,7 @@ class CreateInvitation extends Component {
       console.log(err)
     }
 
+    this.setState({ inputValue: '' });
     this.props.getInvitations();
   }
 
@@ -46,6 +47,7 @@ class CreateInvitation extends Component {
             name='dates'
             value={this.state.inputValue}
             onChange={this.handleChange}
+            multiline
             margin='normal'
             variant='outlined'
           />
