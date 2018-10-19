@@ -6,10 +6,13 @@ import TextField from '@material-ui/core/TextField';
 
 class CreateInvitation extends Component {
 
-  state = {
-    inputValue: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: '',
+    }
   }
-
+  
   handleChange = event => {
     this.setState({
       inputValue: event.target.value
@@ -26,13 +29,12 @@ class CreateInvitation extends Component {
         method: 'post',
         url: 'http://localhost:8090/invitations/add',
         data: params,
-      });
+      });      
+      this.props.getInvitations();
+      this.setState({ inputValue: '' });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-
-    this.setState({ inputValue: '' });
-    this.props.getInvitations();
   }
 
   render() {

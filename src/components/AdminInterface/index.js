@@ -4,7 +4,6 @@ import key from '../../key';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-import CreateInvitation from '../CreateInvitation';
 import Invitations from '../Invitations';
 
 class AdminInterface extends Component {
@@ -15,10 +14,6 @@ class AdminInterface extends Component {
     inputValue: '',
     showAdminInterface: false,
     errorPass: false
-  }
-
-  componentDidMount() {
-    this.getInvitations();
   }
 
   handleInputChange = event => {
@@ -35,18 +30,6 @@ class AdminInterface extends Component {
     }
   }
 
-  getInvitations = async () => {
-    console.log('getting invitations ..');
-    const request = await axios.get('http://localhost:8090/invitations');
-    const invitations = await request.data;
-
-    this.setState({ invitations })
-  }
-
-  removeItem = async (id) => {
-    await axios.get(`http://localhost:8090/invitations/delete/${id}`);
-    this.getInvitations();
-  }
 
   render() {
     return (
@@ -70,10 +53,7 @@ class AdminInterface extends Component {
 
         {this.state.showAdminInterface &&
           <div className='admin-create-invitations'>
-            <CreateInvitation getInvitations={this.getInvitations} />
-            <Invitations invitations={this.state.invitations}
-              getInvitations={this.getInvitations}
-              removeItem={this.removeItem} />
+            <Invitations isAdmin={this.props.location.pathname === '/admin'}/>
           </div>
         }
       </div>
