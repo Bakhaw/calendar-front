@@ -23,6 +23,7 @@ class CreateInvitation extends Component {
     event.preventDefault();
     const params = new URLSearchParams();
     params.append('dates', this.state.inputValue);
+    params.append('checked', false);
 
     try {
       await axios({

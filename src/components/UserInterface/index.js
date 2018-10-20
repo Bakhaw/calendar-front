@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 
 import Calendar from '../Calendar';
@@ -30,9 +31,10 @@ class UserInterface extends Component {
     }
 
     getInvitations = async () => {
-        const request = await axios.get('http://localhost:8090/invitations');
+        const request = await axios.get('http://localhost:8090/invitations/availables');
         const invitations = await request.data;
 
+        console.log({ invitations })
         this.setState({ invitations })
     }
 
@@ -56,7 +58,7 @@ class UserInterface extends Component {
                 <div className='user-interface'>
                     {step === 1 &&
                         <div className='user-form'>
-                            <h1>Qui êtes-vous?</h1>
+                            <h1>Qui êtes-vous ?</h1>
                             <TextField className='user-input'
                                 label='Nom'
                                 error={lastname.error}
@@ -68,7 +70,7 @@ class UserInterface extends Component {
                             <TextField className='user-input'
                                 label='Prénom'
                                 error={name.error}
-                                helperText='* Champs obligatoire'
+                                helperText='* Champs obligatoires'
                                 name='name'
                                 onChange={(e) => this.handleChangeInput(e)}
                                 required
@@ -77,13 +79,22 @@ class UserInterface extends Component {
                             <Button className='submit-button' type='submit' size='large' variant='contained' color='primary' onClick={this.handleFormSubmit}>
                                 Valider
                             </Button>
+
+                            <Link to='/calendar' className='show-calendar'>
+                                <Button size='large' variant='outlined' color='primary'>
+                                    Voir le Calendrier
+                                </Button>
+                            </Link>
                         </div>
                     }
 
                     {step === 2 &&
                         <div className='choose-date'>
                             <h1>Choisissez vos dates, {name.value}</h1>
-                            <Invitations lastname={lastname} name={name} history={this.props.history}/>
+                            <Invitations lastname={lastname}
+                                    name={name}
+                                    title={`${lastname.value} ${name.value}`}
+                                    history={this.props.history} />
                         </div>
                     }
                 </div>

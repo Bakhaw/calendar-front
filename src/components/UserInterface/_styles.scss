@@ -22,9 +22,21 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        h1 {
+            font-weight: normal;
+            color: #3F51B5;
+            font-size: 2.1em;
+        }
         .user-input {
             width: 100%;
             margin-bottom: 20px;
+        }
+        .show-calendar {
+            width: 100%;
+            margin: 10px 0;
+            button {
+                width: 100%;
+            }
         }
     }
 }
